@@ -1,5 +1,4 @@
 import React from 'react';
-import isNil from 'lodash/isNil';
 
 import {t} from 'app/locale';
 import {Event, Project} from 'app/types';
@@ -8,6 +7,7 @@ import CrashContent from 'app/components/events/interfaces/crashContent';
 import Pills from 'app/components/pills';
 import Pill from 'app/components/pill';
 import {ThreadType} from 'app/types/events';
+import {defined} from 'app/utils';
 
 type CrashContentProps = React.ComponentProps<typeof CrashContent>;
 
@@ -30,14 +30,14 @@ const Thread = ({
   exception,
   stacktrace,
 }: Props) => {
-  const renderPills = !isNil(data.id) || !!data.name;
+  const renderPills = defined(data.id) || !!data.name;
   const hasMissingStacktrace = !(exception || stacktrace);
 
   return (
     <div className="thread">
       {renderPills && (
         <Pills>
-          {!isNil(data.id) && <Pill name={t('id')} value={String(data.id)} />}
+          {defined(data.id) && <Pill name={t('id')} value={String(data.id)} />}
           {!!data.name?.trim() && <Pill name={t('name')} value={data.name} />}
           <Pill name={t('was active')} value={data.current} />
           <Pill name={t('errored')} className={data.crashed ? 'false' : 'true'}>
