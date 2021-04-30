@@ -32,7 +32,7 @@
     "@types/create-react-class": "^15.6.2",
     "@types/diff": "5.0.0",
     "@types/dompurify": "^2.2.1",
-    "@types/echarts": "^4.9.3",
+    "@types/echarts": "^4.9.7",
     "@types/jest": "^26.0.23",
     "@types/jquery": "^2.0.53",
     "@types/js-cookie": "^2.2.6",
